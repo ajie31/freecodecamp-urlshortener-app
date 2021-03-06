@@ -50,10 +50,10 @@ const createAndSaveURL = async (original, short) => {
 };
 // Post method below
 app.use(urlEncoded);
-app.post("/api/shorturl/new", async (req, res, next) => {
+app.post("/api/shorturl/new", async (req, res) => {
   const original_url = req.body.url;
   const short_url = shortid.generate();
-  if (!validUrl.isUri(original_url)) {
+  if (!validUrl.isWebUri(original_url)) {
     res.status(401).json({
       error: "invalid url",
     });
