@@ -53,7 +53,7 @@ app.use(urlEncoded);
 app.post("/api/shorturl/new", async (req, res, next) => {
   const original_url = req.body.url;
   const short_url = shortid.generate();
-  if (!validUrl.isWebUri(original_url)) {
+  if (!validUrl.isHttpsUri(original_url)) {
     res.status(401).json({
       error: "invalid url",
     });
